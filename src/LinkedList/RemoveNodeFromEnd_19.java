@@ -37,7 +37,7 @@ public class RemoveNodeFromEnd_19 {
             pFast = pFast.next;
             pSlow = pSlow.next;
         }
-        //删除待删除NOde
+        //删除指定Node
         pSlow.next = pSlow.next.next;
         return visualHead.next;
     }
