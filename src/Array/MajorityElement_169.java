@@ -26,7 +26,7 @@ public class MajorityElement_169 {
 
     /**
      * LeetCode上MostVotes答案
-     * 元素相同计数+1 元素不同计数-1 【简单理解2元素不同则抵消掉】
+     * 摩尔投票算法 ：元素相同计数+1 元素不同计数-1 【简单理解2元素不同则抵消掉】
      * 在题目超过n/2并且必定有解的前提下 最终剩下的必定是超过n/2的元素
      * @param nums
      * @return
