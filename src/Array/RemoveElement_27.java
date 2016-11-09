@@ -20,12 +20,12 @@ public class RemoveElement_27 {
      * 和26题相比 本题稍微增加了难度 数组不再有序
      * 若像26题采用同样的方式处理：记录remove的index 并用未remove的元素来替换也是能方便实现的。
      * 而且Discuss上MostVotes答案（见mostVotes方法）就是采用的这种方式 毕竟这种方式很容易理解且代码量较少
-     *
      * 这种方式有点类似插入排序在极端情况下所有未remove的元素都需要整体移动一次，而本题和26不一样明确指明了新的数组无需保证原有的顺序
-     * 比如example({1,2,3,4,5,6},1)这种情况下本来只需要简单的将nums[0]赋值为nums[5]即可 而采用mostVotes则会对依次赋值5次 有点多余
+     * 比如mostVotes({1,2,3,4,5,6},1)这种情况下本来只需要简单的将nums[0]赋值为nums[5]即可 而采用mostVotes则会对依次赋值6次 有点多余
      *
      * 因此思考能不能直接将需要remove的位置替换为符合条件的元素 想到快速排序中左右哨兵的方式就能解决了
-     * PS：这种和快排一样是不稳定的方式 运行速度依赖传入的条件参数 自己在LeetCode Submit多次 Beats率在60%左右 有几次能到95%。网上说和网络以及当时test cases有关
+     * PS：这种和快排一样是不稳定的方式 运行速度依赖当次test cases。 自己在LeetCode Submit多次 平均RunTime和Beats率都还行。
+     *
      *
      *
      * @param nums
