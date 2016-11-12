@@ -38,27 +38,30 @@ public class FindMinimuminRotatedSortedArray_153 {
      * @return
      */
     private static int findMinMumByBinarySearch(int[] nums){
-        if (nums.length == 0)
+        if (nums.length == 1)
             return nums[0];
         int left = 0;
         int right = nums.length - 1;
         int midd;
-        while (left < right){
-            midd = (right + left) >>> 1;
-            if (nums[midd] < nums[midd-1])
-                return nums[midd];
-            //因为原数组有序 无论旋转哪部分 旋转后无序部分中必然包含最小
-            if (nums[midd] > nums[right])
-                left = midd + 1;
-            else if (nums[midd] < nums[left])
-                right = midd - 1;
-            else
-                return nums[left];
+
+        while (nums[left] > nums[right]){
+            midd = (right+left) >>> 1;
+           if(nums[midd] > nums[right]){
+               //右半部无序 则min必在右半部
+               left = midd+1;
+           }else if(nums[midd] < nums[left]){
+
+               //左半部无序 则min必在右半部
+               right = midd;
+           }else
+               return nums[left];//整个数组有序时（未发生旋转的情况）
+
+
         }
         return nums[left];
     }
 
     public static void main(String[] args) {
-        System.out.println(findMinMumByBinarySearch(new int[]{4,5,6,7,8,0,1,2}));
+        System.out.println(findMinMumByBinarySearch(new int[]{3,1,2}));
     }
 }
