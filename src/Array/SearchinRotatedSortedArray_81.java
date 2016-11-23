@@ -11,7 +11,6 @@ public class SearchinRotatedSortedArray_81 {
 
 
     private static boolean search(int[] nums, int target) {
-        int index = -1;
         int leftIndex = 0;
         int rightIndex = nums.length-1;
         int middIndex;
