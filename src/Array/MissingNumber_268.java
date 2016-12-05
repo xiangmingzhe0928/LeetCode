@@ -13,9 +13,10 @@ public class MissingNumber_268 {
 
     /**
      * 本题是大学的时候做的一道题 本质上上一道数学题 因为不重复元素，无论顺序如何或者无论丢失哪个数
-     * 数组总数不会，因此Sum(1-N) - Sum(nums)得到的值就是Missing的值
+     * 数组总数不会改变，因此Sum(1-N) - Sum(nums)得到的值就是Missing的值
      *
-     * XOR运算更方便 效率更高
+     * 求和的方式不写了
+     * 本题XOR运算更方便 效率更高
      * @param nums
      * @return
      */
