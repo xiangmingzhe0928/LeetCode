@@ -17,19 +17,20 @@ public class MaximumSubarray_53 {
      * 到下标K时【子串】和Sum(k) 必然是Sum(k-1)+nums[K]
      * 又因考虑到数组中负数的情况：到下标K时【最大子串】和MaxSum(k) 必然是max(MaxSum(k-1)+nums[K],MaxSum(k-1))
      *
-     * MaxSum(k) = MaxSum(k-1)+nums[k]
+     * MaxSum(k) = Math.max(MaxSum(k-1)+nums[k],MaxSum(k-1))
      *
      * @param nums
      * @return
      */
     public static int maxSubArray(int[] nums) {
-        //S[k] = S[k-1] + n[k]
+        //MaxSum(k) = Math.max(MaxSum(k-1)+nums[k],MaxSum(k-1))
         int maxSubLen = nums[0];//总最大
         int maxCurrenSub = nums[0];//到当前下标 最大子串
         for(int i=1;i<nums.length;i++){
-            if(maxCurrenSub < 0)maxCurrenSub = 0;//若s(k-1)为负数 则以k开始重新求和
+//            if(maxCurrenSub < 0)maxCurrenSub = 0;//若s(k-1)为负数 则以k开始重新求和
+//            maxCurrenSub+=nums[i];
 
-            maxCurrenSub+=nums[i];
+            maxCurrenSub = Math.max(maxCurrenSub+nums[i],nums[i]);
             maxSubLen = Math.max(maxSubLen,maxCurrenSub);
         }
 
