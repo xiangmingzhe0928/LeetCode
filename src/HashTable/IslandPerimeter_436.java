@@ -9,10 +9,12 @@ package HashTable;
  The island doesn't have "lakes" (water inside that isn't connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don't exceed 100. Determine the perimeter of the island.
 
  例：
- [[0,1,0,0],
+ [
+ [0,1,0,0],
  [1,1,1,0],
  [0,1,0,0],
- [1,1,0,0]]====》周长16
+ [1,1,0,0]
+ ]====》周长16
 
  * author:mingzhe Xiang
  * date:2017/1/17
