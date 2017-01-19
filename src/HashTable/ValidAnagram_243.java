@@ -66,6 +66,7 @@ public class ValidAnagram_243 {
         return true;
 
         //可以优化后少一次for循环
+//        if(s.length() != t.length())return false;
 //        int[] alphabet = new int[26];
 //        for (int i = 0; i < s.length(); i++){
 //            alphabet[s.charAt(i) - 'a']++;
