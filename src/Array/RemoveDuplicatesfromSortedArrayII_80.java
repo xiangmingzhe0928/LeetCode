@@ -38,6 +38,7 @@ public class RemoveDuplicatesfromSortedArrayII_80 {
 
     /**
      *
+     * 同样借助双指针
      * @param nums
      * @param dupCount 允许重复最大次数
      * @return
@@ -45,9 +46,10 @@ public class RemoveDuplicatesfromSortedArrayII_80 {
     private static int mostVotes(int[] nums,int dupCount){
         if(nums.length<dupCount) return nums.length;
         int i,j;
-        for(i=dupCount,j=dupCount ; i<nums.length;i++)
-            if(nums[j-dupCount]!=nums[i])
-                nums[j++]=nums[i];
+        for(i=dupCount,j=dupCount ; i<nums.length;i++) {
+            if (nums[j - dupCount] != nums[i])
+                nums[j++] = nums[i];
+        }
         return j;
 
 //        int i = 0;
@@ -61,5 +63,6 @@ public class RemoveDuplicatesfromSortedArrayII_80 {
 
 //        Arrays.asList(1,2,3,4,5).forEach(System.out::println);
         System.out.println(removeDuplicate(new int[]{1,1,1,2,2,2,3,3}));
+        System.out.println(mostVotes(new int[]{1,1,1,2,2,2,3,3},2));
     }
 }
