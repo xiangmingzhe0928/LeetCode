@@ -9,14 +9,23 @@ package Tree;
 public class ConstructBinaryTreeFromInorderPreorder_106 {
 
     public static TreeNode buildTree(int[] preorder,int[] inorder){
-
         return getTreeRootNode(inorder,preorder,0,inorder.length-1,0,preorder.length-1);
     }
 
+    /**
+     *
+     * @param inorder 中序遍历数组
+     * @param preorder 前序遍历数组
+     * @param inStartIndex 子树 在中序数组中的起始下标
+     * @param inEndIndex 子树 在中序数组中的结束下标
+     * @param preStartIndex 子树 在前序数组中的起始下标
+     * @param preEndIndex 子树 在前序数组中的结束下标
+     * @return 子树根节点
+     */
     public static TreeNode getTreeRootNode(int[] inorder,int[] preorder,int inStartIndex,int inEndIndex,int preStartIndex,int preEndIndex){
       if(inEndIndex < inStartIndex || preEndIndex < preStartIndex)
           return null;
-        //当前子树root节点
+        //构造当前子树root节点
         TreeNode root = new TreeNode(preorder[preStartIndex]);
         //在中序遍历数组中找到当前root位置
         int nowRootInIndex = 0;
@@ -26,9 +35,11 @@ public class ConstructBinaryTreeFromInorderPreorder_106 {
                 break;
             }
         }
-        //左子树个数
+        //计算左子树节点个数
         int leftTreeLen = nowRootInIndex - inStartIndex;
+        //递归获取左子树
         root.left = getTreeRootNode(inorder,preorder,inStartIndex,nowRootInIndex-1,preStartIndex+1,preStartIndex+leftTreeLen);
+        //递归获取右子树
         root.right = getTreeRootNode(inorder,preorder,nowRootInIndex+1,inEndIndex,preStartIndex+leftTreeLen+1,preEndIndex);
         return root;
     }
