@@ -1,6 +1,6 @@
-#MyLeetCode-BinarySearch
+# MyLeetCode-BinarySearch
 
-##定义
+## 定义
 * 【Wiki】
 > Binary search works on sorted arrays.
 A binary search begins by comparing the middle element of the array with the target value.
@@ -14,7 +14,7 @@ If the target value is less than or greater than the middle element, the search 
 这样，经过一次比较就缩小一半的检索区间，如此进行下去，直到检索成功或检索失败。
 偶数个取中间2个其中任何一个作为中间元素
 
-##实现方式
+## 实现方式
 BinarySearch最常用的2种实现方式
 * 递归
 * 循环
