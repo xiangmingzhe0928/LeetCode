@@ -11,23 +11,23 @@ package Array;
  */
 public class MissingNumber_268 {
 
-    /**
-     * 本题是大学的时候做的一道题 本质上上一道数学题 因为不重复元素，无论顺序如何或者无论丢失哪个数
-     * 数组总数不会改变，因此Sum(1-N) - Sum(nums)得到的值就是Missing的值
-     *
-     * 求和的方式不写了
-     * 本题XOR运算更方便 效率更高
-     * @param nums
-     * @return
-     */
-    public int missingNumber(int[] nums) {
-        int temp = 0;
-        //避免数组越界 本处只处理到nums.length-1处
-        for(int i=0;i<nums.length;i++){
-            //XOR运算 相同数异或为0  任何数与0异或值不变
-            temp ^= (i ^ nums[i]);
-        }
+	/**
+	 * 本题是大学的时候做的一道题 本质上上一道数学题 因为不重复元素，无论顺序如何或者无论丢失哪个数
+	 * 数组总数不会改变，因此Sum(1-N) - Sum(nums)得到的值就是Missing的值
+	 *
+	 * 求和的方式不写了
+	 * 本题XOR运算更方便 效率更高
+	 * @param nums
+	 * @return
+	 */
+	public int missingNumber(int[] nums) {
+		int temp = 0;
+		//避免数组越界 本处只处理到nums.length-1处
+		for (int i = 0; i < nums.length; i++) {
+			//XOR运算 相同数异或为0  任何数与0异或值不变
+			temp ^= (i ^ nums[i]);
+		}
 
-        return temp^nums.length;
-    }
+		return temp ^ nums.length;
+	}
 }

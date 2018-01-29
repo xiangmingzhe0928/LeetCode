@@ -19,29 +19,29 @@ import java.util.List;
  */
 public class SubsetsII_90 {
 
-    public static List<List<Integer>> subset2(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> res = new ArrayList<>();
-        dfs(nums, 0, res, new ArrayList<Integer>());
-        return res;
-    }
+	public static List<List<Integer>> subset2(int[] nums) {
+		Arrays.sort(nums);
+		List<List<Integer>> res = new ArrayList<>();
+		dfs(nums, 0, res, new ArrayList<Integer>());
+		return res;
+	}
 
-    private static void dfs(int[] nums, int pos, List<List<Integer>> res, List<Integer> tmpRes) {
-        if(pos <= nums.length){
-            System.out.println("ps:"+pos+"--->"+tmpRes);
-            res.add(new ArrayList<>(tmpRes));
-        }
+	private static void dfs(int[] nums, int pos, List<List<Integer>> res, List<Integer> tmpRes) {
+		if (pos <= nums.length) {
+			System.out.println("ps:" + pos + "--->" + tmpRes);
+			res.add(new ArrayList<>(tmpRes));
+		}
 
-        for(int i=pos; i<nums.length; i++) {
-            if(i > pos && nums[i] == nums[i-1])
-                continue;
-            tmpRes.add(nums[i]);
-            dfs(nums, i + 1, res, tmpRes);
-            tmpRes.remove(tmpRes.size() - 1);
-        }
-    }
+		for (int i = pos; i < nums.length; i++) {
+			if (i > pos && nums[i] == nums[i - 1])
+				continue;
+			tmpRes.add(nums[i]);
+			dfs(nums, i + 1, res, tmpRes);
+			tmpRes.remove(tmpRes.size() - 1);
+		}
+	}
 
-    public static void main(String[] args) {
-        System.out.println(subset2(new int[]{1,2,2}));
-    }
+	public static void main(String[] args) {
+		System.out.println(subset2(new int[] {1, 2, 2}));
+	}
 }

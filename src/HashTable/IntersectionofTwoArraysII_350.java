@@ -21,40 +21,39 @@ import java.util.Arrays;
  */
 public class IntersectionofTwoArraysII_350 {
 
-    /**
-     * 对数组分别排序后，借助双指针分别指向nums1,nums2 一一比较
-     * 1.相等(交集)则存入数组 两指针同时后移
-     * 2.不相等 则移动较小数组指针
-     *
-     * @param nums1
-     * @param nums2
-     * @return
-     */
-    public int[] intersect(int[] nums1, int[] nums2) {
-        //排序原数组
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        int point1 = 0, point2 = 0;
-        ArrayList<Integer> intersectList = new ArrayList<>();
-        while (point1 < nums1.length && point2 < nums2.length) {
+	/**
+	 * 对数组分别排序后，借助双指针分别指向nums1,nums2 一一比较
+	 * 1.相等(交集)则存入数组 两指针同时后移
+	 * 2.不相等 则移动较小数组指针
+	 *
+	 * @param nums1
+	 * @param nums2
+	 * @return
+	 */
+	public int[] intersect(int[] nums1, int[] nums2) {
+		//排序原数组
+		Arrays.sort(nums1);
+		Arrays.sort(nums2);
+		int point1 = 0, point2 = 0;
+		ArrayList<Integer> intersectList = new ArrayList<>();
+		while (point1 < nums1.length && point2 < nums2.length) {
 
-            if(nums1[point1] == nums2[point2]){
-                //记录交集元素
-                intersectList.add(nums1[point1]);
-                //后移指针
-                point1++;
-                point2++;
-            }else if(nums1[point1] > nums2[point2])
-                point2++ ;
-            else
-                point1++;
-        }
+			if (nums1[point1] == nums2[point2]) {
+				//记录交集元素
+				intersectList.add(nums1[point1]);
+				//后移指针
+				point1++;
+				point2++;
+			} else if (nums1[point1] > nums2[point2])
+				point2++;
+			else
+				point1++;
+		}
 
-
-        int[] res = new int[intersectList.size()];
-        for (int i = 0; i < res.length; i++) {
-            res[i] =  intersectList.get(i);
-        }
-        return res;
-    }
+		int[] res = new int[intersectList.size()];
+		for (int i = 0; i < res.length; i++) {
+			res[i] = intersectList.get(i);
+		}
+		return res;
+	}
 }

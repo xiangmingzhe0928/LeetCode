@@ -7,41 +7,44 @@ package Tree;
  * date:2016/11/17
  */
 public class TreeNode {
-   public int val;
-   public TreeNode left;
-   public TreeNode right;
-    public int getVal() {
-        return val;
-    }
+	public int val;
+	public TreeNode left;
+	public TreeNode right;
 
-    public void setVal(int val) {
-        this.val = val;
-    }
+	public TreeNode(int x) {
+		val = x;
+	}
 
-    public TreeNode getLeft() {
-        return left;
-    }
+	public int getVal() {
+		return val;
+	}
 
-    public void setLeft(TreeNode left) {
-        this.left = left;
-    }
+	public void setVal(int val) {
+		this.val = val;
+	}
 
-    public TreeNode getRight() {
-        return right;
-    }
+	public TreeNode getLeft() {
+		return left;
+	}
 
-    public void setRight(TreeNode right) {
-        this.right = right;
-    }
+	public void setLeft(TreeNode left) {
+		this.left = left;
+	}
 
-    public TreeNode(int x) { val = x; }
+	public TreeNode getRight() {
+		return right;
+	}
 
-//    @Override
-//    public String toString() {
-//        return "TreeNode{" +
-//                "val=" + val +
-//                ", left=" + left +
-//                ", right=" + right +
-//                '}';
-//    }
+	public void setRight(TreeNode right) {
+		this.right = right;
+	}
+
+	//    @Override
+	//    public String toString() {
+	//        return "TreeNode{" +
+	//                "val=" + val +
+	//                ", left=" + left +
+	//                ", right=" + right +
+	//                '}';
+	//    }
 }

@@ -13,48 +13,48 @@ import java.util.List;
  */
 public class SummaryRanges_228 {
 
-    /**
-     * 遍历暴力解法
-     * 复杂读高 LeetCode上Beats率太低
-     * @param nums
-     * @return
-     */
-    public static List<String> summaryRanges(int[] nums) {
-        List<String> res = new ArrayList<String>();
-        int n = 0;
-        int left,right;
-        while(n < nums.length){
-            left = nums[n];
-            while(n<nums.length-1 && nums[n+1] == nums[n]+1)
-                n++;
+	/**
+	 * 遍历暴力解法
+	 * 复杂读高 LeetCode上Beats率太低
+	 * @param nums
+	 * @return
+	 */
+	public static List<String> summaryRanges(int[] nums) {
+		List<String> res = new ArrayList<String>();
+		int n = 0;
+		int left, right;
+		while (n < nums.length) {
+			left = nums[n];
+			while (n < nums.length - 1 && nums[n + 1] == nums[n] + 1)
+				n++;
 
-            right = nums[n];
-            if(left == right)
-                res.add(""+nums[n]);
-            else
-                res.add(left+"->"+right);
-            n++;
-        }
-        return res;
-    }
+			right = nums[n];
+			if (left == right)
+				res.add("" + nums[n]);
+			else
+				res.add(left + "->" + right);
+			n++;
+		}
+		return res;
+	}
 
-    public static List<String> summaryRangesBinarySearch(int[] nums){
-        int left = 0;
-        int right = nums.length-1;
-        int midd;
-//        while(left < right){
-//            midd = (right+left)>>>1;
-//            if(nums[left] == nums[midd] - (midd-left)){
-//                StringBuilder sb = new StringBuilder();
-//                int temp = left;
-//               while(temp < midd){
-//                   sb.append(nums[temp++]);
-//               }
-//               if(nums[midd] + 1)
-//            }else if(){
-//
-//            }
-//        }
-        return null;
-    }
+	public static List<String> summaryRangesBinarySearch(int[] nums) {
+		int left = 0;
+		int right = nums.length - 1;
+		int midd;
+		//        while(left < right){
+		//            midd = (right+left)>>>1;
+		//            if(nums[left] == nums[midd] - (midd-left)){
+		//                StringBuilder sb = new StringBuilder();
+		//                int temp = left;
+		//               while(temp < midd){
+		//                   sb.append(nums[temp++]);
+		//               }
+		//               if(nums[midd] + 1)
+		//            }else if(){
+		//
+		//            }
+		//        }
+		return null;
+	}
 }

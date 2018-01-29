@@ -13,49 +13,48 @@ package Array;
  */
 public class SearchinRotatedSortedArray_33 {
 
-    /**
-     * 虽然数组是经过旋转后的，但由于原数组是有序的 仍然可以考虑变通使用BinarySearch
-     * 2分查找后数组必然被分成有序和无序两部分 这时就能先判断target是否在有序子串内从而达到缩小下轮查找范围的目的
-     * @param nums
-     * @param target
-     * @return
-     */
-    public static int search(int[] nums, int target) {
-        int index = -1;
-        int leftIndex = 0;
-        int rightIndex = nums.length-1;
-        int middIndex;
-        while (leftIndex <= rightIndex){
-            middIndex = (rightIndex + leftIndex) >>> 1;
-            if(nums[middIndex] == target)
-                return middIndex;
+	/**
+	 * 虽然数组是经过旋转后的，但由于原数组是有序的 仍然可以考虑变通使用BinarySearch
+	 * 2分查找后数组必然被分成有序和无序两部分 这时就能先判断target是否在有序子串内从而达到缩小下轮查找范围的目的
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
+	public static int search(int[] nums, int target) {
+		int index = -1;
+		int leftIndex = 0;
+		int rightIndex = nums.length - 1;
+		int middIndex;
+		while (leftIndex <= rightIndex) {
+			middIndex = (rightIndex + leftIndex) >>> 1;
+			if (nums[middIndex] == target)
+				return middIndex;
 
-            //旋转后 数组必然被middIndex分割为有序和无序的两个小数组
-            if(nums[middIndex] > nums[rightIndex]){//midd元素>right元素 则右边必然是无序的
-                if(target == nums[leftIndex])
-                    return leftIndex;
-                //左边有序
-                if(target < nums[middIndex] && target > nums[leftIndex])
-                    rightIndex = middIndex - 1;
-                else
-                    leftIndex = middIndex + 1;
-            }else{
-                //右边有序
-                if(target == nums[rightIndex])
-                    return rightIndex;
-                if(target > nums[middIndex] && target < nums[rightIndex])
-                    leftIndex = middIndex+1;
-                else
-                    rightIndex = middIndex - 1;
+			//旋转后 数组必然被middIndex分割为有序和无序的两个小数组
+			if (nums[middIndex] > nums[rightIndex]) {//midd元素>right元素 则右边必然是无序的
+				if (target == nums[leftIndex])
+					return leftIndex;
+				//左边有序
+				if (target < nums[middIndex] && target > nums[leftIndex])
+					rightIndex = middIndex - 1;
+				else
+					leftIndex = middIndex + 1;
+			} else {
+				//右边有序
+				if (target == nums[rightIndex])
+					return rightIndex;
+				if (target > nums[middIndex] && target < nums[rightIndex])
+					leftIndex = middIndex + 1;
+				else
+					rightIndex = middIndex - 1;
 
-            }
-        }
+			}
+		}
 
-        return index;
-    }
+		return index;
+	}
 
-
-    public static void main(String[] args) {
-        System.out.println(search(new int[]{1,1,3,1},3));
-    }
+	public static void main(String[] args) {
+		System.out.println(search(new int[] {1, 1, 3, 1}, 3));
+	}
 }

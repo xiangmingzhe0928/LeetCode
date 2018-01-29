@@ -18,52 +18,56 @@ import java.util.Map;
  */
 public class IsomorphicStrings_205 {
 
-    /**
-     * 用特殊的key-value HashMap存储S,T对应的Character关系即可
-     *
-     * 第一次submmit时没有考虑到["bbaad","aaaac"]的情况，只使用了一个Map<T,S> 导致["bbaad","aaaac"]情况失败。
-     * 即题目需要ST双向的一一对应,增加一个Map<S,T>即可(也可不增加该Map而对Map<T,S>使用Map的contansValue去判断，但效率不高)
-     * @param s
-     * @param t
-     * @return
-     */
-    public static boolean isIsomorphic(String s, String t) {
-        if(s.length() != t.length())return false;
-        //s为key t为value
-        Map<Character,Character> tempSTMap = new HashMap<>();
-        //t为key s为value
-        Map<Character,Character> tempTSMap = new HashMap<>();
+	/**
+	 * 用特殊的key-value HashMap存储S,T对应的Character关系即可
+	 *
+	 * 第一次submmit时没有考虑到["bbaad","aaaac"]的情况，只使用了一个Map<T,S> 导致["bbaad","aaaac"]情况失败。
+	 * 即题目需要ST双向的一一对应,增加一个Map<S,T>即可(也可不增加该Map而对Map<T,S>使用Map的contansValue去判断，但效率不高)
+	 * @param s
+	 * @param t
+	 * @return
+	 */
+	public static boolean isIsomorphic(String s, String t) {
+		if (s.length() != t.length())
+			return false;
+		//s为key t为value
+		Map<Character, Character> tempSTMap = new HashMap<>();
+		//t为key s为value
+		Map<Character, Character> tempTSMap = new HashMap<>();
 
-        Character tempC;
-        for (int i = 0; i < s.length(); i++) {
-            //hashMap的Put方法 返回值为该key原来的值
-            tempC = tempSTMap.put(s.charAt(i),t.charAt(i));
-            if( tempC != null && tempC != t.charAt(i)) return false;
+		Character tempC;
+		for (int i = 0; i < s.length(); i++) {
+			//hashMap的Put方法 返回值为该key原来的值
+			tempC = tempSTMap.put(s.charAt(i), t.charAt(i));
+			if (tempC != null && tempC != t.charAt(i))
+				return false;
 
-            tempC = tempTSMap.put(t.charAt(i),s.charAt(i));
-            if( tempC != null && tempC != s.charAt(i)) return false;
-        }
-        return true;
-    }
+			tempC = tempTSMap.put(t.charAt(i), s.charAt(i));
+			if (tempC != null && tempC != s.charAt(i))
+				return false;
+		}
+		return true;
+	}
 
-    /**
-     * Discuss上MostVotes方案
-     * 因为Character能被ASCII表示
-     * 采用数组记录T、S一一对应的第i位的字符Char
-     * @param s1
-     * @param s2
-     * @return
-     */
-     public boolean mostVotes(String s1, String s2) {
-        int[] m = new int[512];//定义512 其实本质是int[] ms = new int[256];int[] mt = new int[256]  因为ASCII个数是256
-        for (int i = 0; i < s1.length(); i++) {
-            if (m[s1.charAt(i)] != m[s2.charAt(i)+256]) return false;
-            m[s1.charAt(i)] = m[s2.charAt(i)+256] = i+1;
-        }
-        return true;
-    }
+	public static void main(String[] args) {
+		System.out.println(isIsomorphic("paper", "title"));
+	}
 
-    public static void main(String[] args) {
-        System.out.println(isIsomorphic("paper","title"));
-    }
+	/**
+	 * Discuss上MostVotes方案
+	 * 因为Character能被ASCII表示
+	 * 采用数组记录T、S一一对应的第i位的字符Char
+	 * @param s1
+	 * @param s2
+	 * @return
+	 */
+	public boolean mostVotes(String s1, String s2) {
+		int[] m = new int[512];//定义512 其实本质是int[] ms = new int[256];int[] mt = new int[256]  因为ASCII个数是256
+		for (int i = 0; i < s1.length(); i++) {
+			if (m[s1.charAt(i)] != m[s2.charAt(i) + 256])
+				return false;
+			m[s1.charAt(i)] = m[s2.charAt(i) + 256] = i + 1;
+		}
+		return true;
+	}
 }

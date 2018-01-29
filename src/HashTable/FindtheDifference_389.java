@@ -10,41 +10,42 @@ package HashTable;
  * date:2016/8/6
  */
 public class FindtheDifference_389 {
-    /**
-     * 这题和大学时做的一个 1+2+3+...+100中缺少一个数n 找到n 类似
-     * 受上面影响本题最初自己是求的s,t各自的ascii和 然后求差:Sum(ascii(T))-Sum(ascii(S))
-     * 后来在Discuss上看到XOR运算 确实屌
-     * @param s
-     * @param t
-     * @return
-     */
-    private static char findDifference(String s,String t){
-        int sumAsciiS = 0,sumAsciiT = 0;
-        for (int i=0;i<=s.length()-1;i++)
-            sumAsciiS += s.charAt(i);
-        for (int i=0;i<=t.length()-1;i++)
-            sumAsciiT += t.charAt(i);
+	/**
+	 * 这题和大学时做的一个 1+2+3+...+100中缺少一个数n 找到n 类似
+	 * 受上面影响本题最初自己是求的s,t各自的ascii和 然后求差:Sum(ascii(T))-Sum(ascii(S))
+	 * 后来在Discuss上看到XOR运算 确实屌
+	 * @param s
+	 * @param t
+	 * @return
+	 */
+	private static char findDifference(String s, String t) {
+		int sumAsciiS = 0, sumAsciiT = 0;
+		for (int i = 0; i <= s.length() - 1; i++)
+			sumAsciiS += s.charAt(i);
+		for (int i = 0; i <= t.length() - 1; i++)
+			sumAsciiT += t.charAt(i);
 
-        return (char)(sumAsciiT-sumAsciiS);
-    }
+		return (char)(sumAsciiT - sumAsciiS);
+	}
 
-    /**
-     * XOR运算:0^X = X  X^X = 0
-     * @param s
-     * @param t
-     * @return
-     */
-    private static char mostVotes(String s,String t){
-        int sXOR = 0,tXOR = 0;
-        for(int i=0;i<s.length();i++)
-            sXOR ^= s.charAt(i);
-        for(int i=0;i<t.length();i++)
-            tXOR ^= t.charAt(i);
+	/**
+	 * XOR运算:0^X = X  X^X = 0
+	 * @param s
+	 * @param t
+	 * @return
+	 */
+	private static char mostVotes(String s, String t) {
+		int sXOR = 0, tXOR = 0;
+		for (int i = 0; i < s.length(); i++)
+			sXOR ^= s.charAt(i);
+		for (int i = 0; i < t.length(); i++)
+			tXOR ^= t.charAt(i);
 
-        return (char)(sXOR^tXOR);
-    }
-    public static void main(String[] args) {
-        System.out.println(mostVotes("abcd","bcaed"));
-    }
+		return (char)(sXOR ^ tXOR);
+	}
+
+	public static void main(String[] args) {
+		System.out.println(mostVotes("abcd", "bcaed"));
+	}
 
 }

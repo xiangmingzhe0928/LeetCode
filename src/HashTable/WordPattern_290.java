@@ -20,43 +20,44 @@ import java.util.Map;
  */
 public class WordPattern_290 {
 
-    /**
-     * 考虑借助HashMap保存pattern中各字符代表的字符串 对str一一比较
-     * @param pattern
-     * @param str
-     * @return
-     */
-    public static boolean wordPattern(String pattern, String str) {
-        String[] targetStrArray = str.split(" ");
-        if(pattern.length() != targetStrArray.length) return false;
+	/**
+	 * 考虑借助HashMap保存pattern中各字符代表的字符串 对str一一比较
+	 * @param pattern
+	 * @param str
+	 * @return
+	 */
+	public static boolean wordPattern(String pattern, String str) {
+		String[] targetStrArray = str.split(" ");
+		if (pattern.length() != targetStrArray.length)
+			return false;
 
-        Map<Character,String> patternMap = new HashMap<>();
-        Map<String,Character> strMap = new HashMap<>();
-        char tempChar;
-        String tempStr;
-        for (int i = 0; i < pattern.length(); i++) {
-            tempChar = pattern.charAt(i);
-            tempStr = targetStrArray[i];
+		Map<Character, String> patternMap = new HashMap<>();
+		Map<String, Character> strMap = new HashMap<>();
+		char tempChar;
+		String tempStr;
+		for (int i = 0; i < pattern.length(); i++) {
+			tempChar = pattern.charAt(i);
+			tempStr = targetStrArray[i];
 
-            if(patternMap.containsKey(tempChar)){//该标志char已代表某个字符串
-                if(!patternMap.get(tempChar).equals(tempStr))
-                    return false;
-            }else{
-                //target字符串是否已经被某个char代表
-                if(strMap.containsKey(tempStr)){//可以使用contansValue()简化代码 但这种方式O(N)效率不高
-                    if(!strMap.get(tempStr).equals(tempChar))
-                        return false;
-                }
-                //对应关系分别保存到2个hashMap
-                patternMap.put(tempChar,tempStr);
-                strMap.put(tempStr,tempChar);
-            }
-        }
-        return true;
-    }
+			if (patternMap.containsKey(tempChar)) {//该标志char已代表某个字符串
+				if (!patternMap.get(tempChar).equals(tempStr))
+					return false;
+			} else {
+				//target字符串是否已经被某个char代表
+				if (strMap.containsKey(tempStr)) {//可以使用contansValue()简化代码 但这种方式O(N)效率不高
+					if (!strMap.get(tempStr).equals(tempChar))
+						return false;
+				}
+				//对应关系分别保存到2个hashMap
+				patternMap.put(tempChar, tempStr);
+				strMap.put(tempStr, tempChar);
+			}
+		}
+		return true;
+	}
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        System.out.println(wordPattern("abba","dog cat cat dog"));
-    }
+		System.out.println(wordPattern("abba", "dog cat cat dog"));
+	}
 }

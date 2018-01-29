@@ -15,33 +15,37 @@ package Array;
  */
 public class SearchInsertPosition_35 {
 
-    /**
-     * 最典型的BinarySearch
-     * @param nums
-     * @param target
-     * @return
-     */
-    public static int searchInsert(int[] nums, int target) {
-        if(target <= nums[0]) return 0;
-        if(target > nums[nums.length-1])return nums.length;
+	/**
+	 * 最典型的BinarySearch
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
+	public static int searchInsert(int[] nums, int target) {
+		if (target <= nums[0])
+			return 0;
+		if (target > nums[nums.length - 1])
+			return nums.length;
 
-        int leftIndex = 0,rightIndex = nums.length -1;
-        int middIndex;
-        //BinarySearch
-        while (leftIndex <= rightIndex){
-            //求的midd下标
-            middIndex = (rightIndex + leftIndex) >>> 1;
-            //缩小Search范围
-            if(target == nums[middIndex])return middIndex;
-            else if(nums[middIndex] > target) rightIndex = middIndex - 1;
-            else leftIndex = middIndex+1;
+		int leftIndex = 0, rightIndex = nums.length - 1;
+		int middIndex;
+		//BinarySearch
+		while (leftIndex <= rightIndex) {
+			//求的midd下标
+			middIndex = (rightIndex + leftIndex) >>> 1;
+			//缩小Search范围
+			if (target == nums[middIndex])
+				return middIndex;
+			else if (nums[middIndex] > target)
+				rightIndex = middIndex - 1;
+			else
+				leftIndex = middIndex + 1;
 
-        }
-        return leftIndex;
-    }
+		}
+		return leftIndex;
+	}
 
-
-    public static void main(String[] args) {
-        System.out.println(searchInsert(new int[]{1,2,3,4,5,10},2));
-    }
+	public static void main(String[] args) {
+		System.out.println(searchInsert(new int[] {1, 2, 3, 4, 5, 10}, 2));
+	}
 }

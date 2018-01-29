@@ -21,29 +21,32 @@ package HashTable;
  */
 public class IslandPerimeter_436 {
 
-    /**
-     * 遍历数组
-     * 每2个相邻陆地会减少2条重合边即周长-2
-     * @param grid
-     * @return
-     */
-    public static int islandPerimeter(int[][] grid) {
-        int perimeter = 0 ;
-        for (int i = 0; i < grid.length ; i++) {
+	/**
+	 * 遍历数组
+	 * 每2个相邻陆地会减少2条重合边即周长-2
+	 * @param grid
+	 * @return
+	 */
+	public static int islandPerimeter(int[][] grid) {
+		int perimeter = 0;
+		for (int i = 0; i < grid.length; i++) {
 
-            for (int j = 0; j < grid[0].length ; j++) {
-                if(grid[i][j] == 0) continue;
-                perimeter += 4;
-                //相邻右元素为陆地
-                if(i < grid.length-1 && grid[i+1][j] == 1) perimeter -= 2;
-                //相邻下边元素为陆地
-                if(j < grid[0].length - 1 && grid[i][j+1] == 1)perimeter -=2;
-            }
-        }
-        return perimeter;
-    }
+			for (int j = 0; j < grid[0].length; j++) {
+				if (grid[i][j] == 0)
+					continue;
+				perimeter += 4;
+				//相邻右元素为陆地
+				if (i < grid.length - 1 && grid[i + 1][j] == 1)
+					perimeter -= 2;
+				//相邻下边元素为陆地
+				if (j < grid[0].length - 1 && grid[i][j + 1] == 1)
+					perimeter -= 2;
+			}
+		}
+		return perimeter;
+	}
 
-    public static void main(String[] args) {
-        System.out.println(islandPerimeter(new int[][]{{0,1,0,0},{1,1,1,0},{0,1,0,0},{1,1,0,0}}));
-    }
+	public static void main(String[] args) {
+		System.out.println(islandPerimeter(new int[][] {{0, 1, 0, 0}, {1, 1, 1, 0}, {0, 1, 0, 0}, {1, 1, 0, 0}}));
+	}
 }

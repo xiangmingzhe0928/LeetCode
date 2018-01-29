@@ -13,45 +13,45 @@ package LinkedList;
  */
 public class RemoveNodeFromEnd_19 {
 
-    /**
-     * 采用快慢指针来达到题目要求的one pass
-     * 快慢指针间隔n的距离 当快指针到达链表末尾时 慢指针刚好指向待删NODE的preNode
-     * @param n
-     * @return
-     */
-    private static ListNode removeNthFromEnd(ListNode head,int n){
-        ListNode visualHead = new ListNode(0);//定义一个虚拟头
-        visualHead.next = head;
+	/**
+	 * 采用快慢指针来达到题目要求的one pass
+	 * 快慢指针间隔n的距离 当快指针到达链表末尾时 慢指针刚好指向待删NODE的preNode
+	 * @param n
+	 * @return
+	 */
+	private static ListNode removeNthFromEnd(ListNode head, int n) {
+		ListNode visualHead = new ListNode(0);//定义一个虚拟头
+		visualHead.next = head;
 
-        //初始 快慢指针
-        ListNode pFast = visualHead;
-        ListNode pSlow = visualHead;
+		//初始 快慢指针
+		ListNode pFast = visualHead;
+		ListNode pSlow = visualHead;
 
-        //快指针先移动n位
-        while(n>0){
-            pFast = pFast.next;
-            n--;
-        }
-        //快慢指针同时移动
-        while(pFast.next != null){
-            pFast = pFast.next;
-            pSlow = pSlow.next;
-        }
-        //删除指定Node
-        pSlow.next = pSlow.next.next;
-        return visualHead.next;
-    }
+		//快指针先移动n位
+		while (n > 0) {
+			pFast = pFast.next;
+			n--;
+		}
+		//快慢指针同时移动
+		while (pFast.next != null) {
+			pFast = pFast.next;
+			pSlow = pSlow.next;
+		}
+		//删除指定Node
+		pSlow.next = pSlow.next.next;
+		return visualHead.next;
+	}
 
-    public static void main(String[] args) {
-//        ListNode head = new ListNode(1);
-//        head.next = new ListNode(2);
-//        head.next.next = new ListNode(3);
-//        head.next.next.next = new ListNode(4);
-//        head.next.next.next.next = new ListNode(5);
-//        head.next.next.next.next.next = new ListNode(6);
-        ListNode head = ListNode.getListNodeData(5);
+	public static void main(String[] args) {
+		//        ListNode head = new ListNode(1);
+		//        head.next = new ListNode(2);
+		//        head.next.next = new ListNode(3);
+		//        head.next.next.next = new ListNode(4);
+		//        head.next.next.next.next = new ListNode(5);
+		//        head.next.next.next.next.next = new ListNode(6);
+		ListNode head = ListNode.getListNodeData(5);
 
-        System.out.println(removeNthFromEnd(head,2));
+		System.out.println(removeNthFromEnd(head, 2));
 
-    }
+	}
 }
