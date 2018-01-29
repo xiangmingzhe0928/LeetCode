@@ -4,6 +4,8 @@ package LinkedList;
  * LinkedList
  * description:反转单链表
  * 一个经典的老题目了 今天同事讨论起相关的问题 再写下加深下吧
+ *
+ * @see RotateList_61
  * author:mingzhe Xiang
  * date:2018/1/29
  */
@@ -30,7 +32,6 @@ public class ReverseSingleLinkedList {
 
 	public static void main(String[] args) {
 		ListNode head = ListNode.getListNodeData(5);
-		System.out.println("before:" + head);
-		System.out.println("after:" + reverse(head));
+		System.out.println("BEFORE:" + head + "\nAFTER:" + reverse(head));
 	}
 }
