@@ -37,6 +37,29 @@ public class UniquePaths_62 {
 		return temp[m - 1][n - 1];
 	}
 
+	/**
+	 *
+	 * 一维数组的方式记录 空间复杂度更低
+	 * 理解上稍微有点绕（可理解为逐行或逐列mark）
+	 * @param m
+	 * @param n
+	 * @return
+	 */
+	public static int uniquePaths_1DArray(int m, int n) {
+		// 以行为准
+		int[] arr = new int[n];
+		//首行元素
+        for (int i = 0; i < n; i++) {
+            arr[i] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                arr[j] = arr[j] + arr[j-1];
+            }
+        }
+        return arr[n-1];
+	}
+
 	public static void main(String[] args) {
 		System.out.println(uniquePaths(3, 4));
 	}
