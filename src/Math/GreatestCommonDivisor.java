@@ -1,9 +1,12 @@
 package Math;
 
+/**
+ * 求最大公约数、最小公倍数
+ */
 public class GreatestCommonDivisor {
 
 	/**
-	 * 欧几里得算法
+	 * 最大公约数（欧几里得算法）
 	 * @param a
 	 * @param b
 	 * @return
