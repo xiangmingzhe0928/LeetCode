@@ -64,16 +64,16 @@ public class AddBinary_67 {
 	 * @return
 	 */
 	private static String mosetVotes(String a, String b) {
-		String s = "";
+		String result = "";
 		int c = 0, i = a.length() - 1, j = b.length() - 1;
 		while (i >= 0 || j >= 0 || c == 1) {
 			c += i >= 0 ? a.charAt(i--) - '0' : 0;
 			c += j >= 0 ? b.charAt(j--) - '0' : 0;
-			s = c % 2 + s;
+			result = c % 2 + result;
 			c /= 2;
 		}
 
-		return s;
+		return result;
 
 	}
 
