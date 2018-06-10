@@ -51,7 +51,7 @@ public class FindMinimuminRotatedSortedArray_153 {
 				left = midd + 1;
 			} else if (nums[midd] < nums[left]) {
 
-				//左半部无序 则min必在右半部
+				//左半部无序 则min必在左半部
 				right = midd;
 			} else
 				return nums[left];//整个数组有序时（未发生旋转的情况）
