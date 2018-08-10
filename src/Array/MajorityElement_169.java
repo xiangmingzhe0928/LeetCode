@@ -37,6 +37,7 @@ public class MajorityElement_169 {
 		for (int i = 1; i < nums.length; i++) {
 			if (count == 0) {
 				majorityElement = nums[i];
+                                count++
 			} else if (majorityElement == nums[i]) {
 				count++;
 			} else {
