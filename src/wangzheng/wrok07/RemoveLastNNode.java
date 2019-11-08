@@ -41,9 +41,6 @@ public class RemoveLastNNode {
 		ListNode srcList = ListNode.getListNodeData(5);
 		System.out.println(srcList);
 		System.out.println("--------------");
-//		System.out.println(removeLastNNode(srcList, 0));
-//		System.out.println(removeLastNNode(srcList, 1));
 		System.out.println(removeLastNNode(srcList, 2));
-//		System.out.println(removeLastNNode(srcList, -1));
 	}
 }
