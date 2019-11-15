@@ -72,11 +72,48 @@ public class Work11 {
 	}
 
 
+	private static int[] quickSort(int[] arr) {
+		if (null == arr || arr.length <= 1)
+			return arr;
+
+		doQuickSort(arr, 0, arr.length-1);
+//		int pivotIndex = getQuickPivotIndex(arr, 0, arr.length-1);
+		return arr;
+	}
+
+	private static void doQuickSort(int[] arr, int low, int high) {
+		if (low >= high)
+			return;
+		int pivotIndex = getQuickPivotIndex(arr, low, high);
+		doQuickSort(arr, low, pivotIndex);
+		doQuickSort(arr, pivotIndex + 1, high);
+	}
+
+	private static int getQuickPivotIndex(int[] arr, int leftIndex, int rightIndex) {
+		if (leftIndex >= rightIndex)
+			return leftIndex;
+		int pivot = arr[leftIndex];
+		while (leftIndex < rightIndex) {
+
+			while (pivot <= arr[rightIndex] && leftIndex < rightIndex) {
+				rightIndex --;
+			}
+			arr[leftIndex] = arr[rightIndex];
+
+			while (pivot >= arr[leftIndex] && leftIndex < rightIndex) {
+				leftIndex ++;
+			}
+			arr[rightIndex] = arr[leftIndex];
+		}
+
+		arr[leftIndex] = pivot;
+		return leftIndex;
+	}
 
 	public static void main(String[] args) {
 //		int[] arr = {1,4,5,3,2,7,-22,10,14,13,22,24,26};
-		int[] arr = {5,4,7,2,3,10};
+		int[] arr = {5,4,7,2,10};
 
-		System.out.println(Arrays.toString(insertionSort(arr)));
+		System.out.println(Arrays.toString(quickSort(arr)));
 	}
 }
