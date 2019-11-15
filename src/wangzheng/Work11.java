@@ -77,6 +77,6 @@ public class Work11 {
 //		int[] arr = {1,4,5,3,2,7,-22,10,14,13,22,24,26};
 		int[] arr = {5,4,7,2,3,10};
 
-		System.out.println(Arrays.toString(insertionSort(arr, 5)));
+		System.out.println(Arrays.toString(insertionSort(arr)));
 	}
 }
