@@ -1,7 +1,5 @@
 package wangzheng;
 
-import java.util.Arrays;
-
 /**
  *
  *
@@ -180,12 +178,46 @@ public class Work11 {
 
 	}
 
+	/**
+	 * 小写字母大写字母前
+	 *
+	 * 借用左右指针 找到大小写字母-->交换位置
+	 */
+	private static void sortCharNoSort() {
+		char[] arr = {'Z','D','Z', 'a', 'F', 'B', 'c', 'A', 'z','Z'};
+		int leftIndex = 0;
+		int rightIndex = arr.length - 1;
+
+		while (leftIndex < rightIndex) {
+			while (arr[leftIndex] >  'Z' && leftIndex < rightIndex) {
+				leftIndex ++;
+			}
+			while (arr[rightIndex] <=  'Z' && leftIndex < rightIndex) {
+				rightIndex --;
+			}
+
+			if (leftIndex < rightIndex) {
+				char temp = arr[leftIndex];
+				arr[leftIndex] = arr[rightIndex];
+				arr[rightIndex] = temp;
+			}
+
+			leftIndex ++ ;
+			rightIndex --;
+
+		}
+
+		System.out.println(arr);
+	}
+
 
 	public static void main(String[] args) {
-		int[] arr = {5,4,7,2,10,22,51,2,4,100};
-
-		mergeSort(arr, 0 , arr.length-1);
-
-		System.out.println(Arrays.toString(arr));
+//		int[] arr = {5,4,7,2,10,22,51,2,4,100};
+//
+//		mergeSort(arr, 0 , arr.length-1);
+//
+//		System.out.println(Arrays.toString(arr));
+//
+		sortCharNoSort();
 	}
 }
