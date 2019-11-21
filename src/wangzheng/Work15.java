@@ -18,25 +18,27 @@ public class Work15 {
 	private static double sqrtBinarySearch(double n) {
 		if (n < 1)
 			throw new IllegalArgumentException("un support");
-		
+
 		double low = 0;
 		double high = n;
-		double midd = low + ((high - low)/2.0);
+		double midd = low + ((high - low) / 2.0);
+		double m2 = midd * midd;
 
-		while (Math.abs(midd*midd - n) > PRECISION) {
-			double m2 = midd * midd;
-			if (m2 -n > PRECISION) {
+		while (Math.abs(m2 - n) > PRECISION) {
+			if (m2 - n > PRECISION) {
 				high = midd;
-			} else if (m2 -n < -PRECISION) {
+			} else if (m2 - n < -PRECISION) {
 				low = midd;
-			}else {
+			} else {
 				return midd;
 			}
 
-			midd = low + ((high - low)/2.0);
+			midd = low + ((high - low) / 2.0);
+			m2 = midd * midd;
 		}
 
 		return midd;
+
 	}
 
 	/**
@@ -46,14 +48,16 @@ public class Work15 {
 	 */
 	private static double sqrtNewTon(double n) {
 		// 初始猜想
-		double guess = n/2.0;
-		while (Math.abs(guess - n/guess) > PRECISION) {
+		double guess = n / 2.0;
+		while (Math.abs(guess - n / guess) > PRECISION) {
 			guess = (guess + n / guess) / 2.0;
 		}
 		return guess;
 	}
+
 	public static void main(String[] args) {
-		System.out.println(sqrtBinarySearch(16.0d));
-		System.out.println(sqrtNewTon(16.0d));
+		double d = 2.0d;
+		System.out.println(sqrtBinarySearch(d));
+		System.out.println(sqrtNewTon(d));
 	}
 }
