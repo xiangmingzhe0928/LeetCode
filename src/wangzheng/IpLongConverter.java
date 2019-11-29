@@ -39,14 +39,11 @@ public class IpLongConverter {
 	 * @return
 	 */
 	private static String long2Ip(long ipLong) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(ipLong >>> 24).append(".");
 		// 解析第2段ip ipLong & 0x00FFFFFF目的为排除第1段ip
-		sb.append((ipLong & 0x00FFFFFF) >>> 16).append(".");
-		sb.append((ipLong & 0x0000FFFF) >>> 8).append(".");
-		sb.append((ipLong & 0x000000FF));
-
-		return sb.toString();
+		return String.valueOf(ipLong >>> 24) + "."
+			+ ((ipLong & 0x00FFFFFF) >>> 16) + "."
+			+ ((ipLong & 0x0000FFFF) >>> 8) + "."
+			+ (ipLong & 0x000000FF);
 	}
 
 	public static void main(String[] args) throws UnknownHostException {
@@ -59,6 +56,7 @@ public class IpLongConverter {
 			long ipLong= ip2Long(address);
 			System.out.println("ip to long:" + ipLong);
 			System.out.println("long to ip:" + long2Ip(ipLong));
+
 		}
 	}
 }
