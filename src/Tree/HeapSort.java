@@ -5,6 +5,10 @@ import java.util.Arrays;
 /**
  *
  * description:HeapSort
+ * <pre>
+ * 堆本质是一颗完全二叉树。O(nlog2n)
+ * 则有一个节点n，它的左子节点为2n+1 右子节点为2n+2
+ * </pre>
  * 今天遇到需要堆排的相关东西，又特么有点模糊了，记录一下
  * author:mingzhe Xiang
  * date:2017/11/09
