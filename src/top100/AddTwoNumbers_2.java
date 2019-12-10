@@ -1,7 +1,4 @@
-package wangzheng;
-
-import java.util.HashMap;
-import java.util.Map;
+package top100;
 
 import LinkedList.ListNode;
 
@@ -10,26 +7,9 @@ import LinkedList.ListNode;
  *
  *
  * @author: Xiang Mingzhe
- * @version TwoSum.java, v 0.1 2019/12/9 17:07 XiangMingZhe Exp $
+ * @version AddTwoNumbers_2.java, v 0.1 2019/12/10 8:58 XiangMingZhe Exp $
  **/
-public class TwoSum {
-
-	public int[] twoSum(int[] nums, int target) {
-		int length = nums.length;
-		Map<Integer, Integer> temp = new HashMap(length);
-		int[] res = new int[2];
-		for (int i = 0; i < length; i++) {
-			int firstKey = target - nums[i];
-			if (temp.containsKey(firstKey)) {
-				res[0] = temp.get(firstKey);
-				res[1] = i;
-				break;
-			}
-			temp.put(nums[i], i);
-		}
-		return res;
-	}
-
+public class AddTwoNumbers_2 {
 	/**
 	 * You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 	 *
@@ -39,6 +19,31 @@ public class TwoSum {
 	 * @return
 	 */
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		ListNode temp = new ListNode(0);
+		ListNode head = temp;
+		// 进位数
+		int carry = 0;
+		int sum;
+		while (null != l1 || null != l2 || carry != 0) {
+			sum = (null == l1 ? 0 : l1.val) + (null == l2 ? 0 : l2.val) + carry;
+			int currentVal = sum % 10;
+			carry = sum / 10;
+			temp.next = new ListNode(currentVal);
+			temp = temp.next;
+			l1 = null == l1 ? null : l1.next;
+			l2 = null == l2 ? null : l2.next;
+		}
+
+		return head.next;
+	}
+
+	/**
+	 * 分步处理各情况
+	 * @param l1
+	 * @param l2
+	 * @return
+	 */
+	private static ListNode stepByStep(ListNode l1, ListNode l2) {
 		ListNode temp = new ListNode(0);
 		ListNode head = temp;
 		// 进位数
@@ -80,15 +85,12 @@ public class TwoSum {
 	}
 
 	public static void main(String[] args) {
-		ListNode l1 = new ListNode(9);
-		l1.next =  new ListNode(8);
-//		l1.next.next =  new ListNode(3);
-		ListNode l2 = new ListNode(1);
-//		l2.next = new ListNode(8);
-//		l2.next.next = new ListNode(1);
-
-		System.out.println(l1);
-		System.out.println(l2);
+		ListNode l1 = new ListNode(2);
+		l1.next = new ListNode(4);
+		l1.next.next = new ListNode(3);
+		ListNode l2 = new ListNode(5);
+		l2.next = new ListNode(6);
+		l2.next.next = new ListNode(4);
 
 		System.out.println(addTwoNumbers(l1, l2));
 	}
