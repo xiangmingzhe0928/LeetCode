@@ -23,7 +23,7 @@ public class LetterCombinationsPhoneNumber_17 {
 	 * @param digits
 	 * @return
 	 */
-	public  List<String> letterCombinations(String digits) {
+	private static List<String> letterCombinations(String digits) {
 		int length = digits.length();
 		if (0 == length) {
 			return Collections.emptyList();
