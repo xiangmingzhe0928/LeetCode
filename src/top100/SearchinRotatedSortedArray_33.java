@@ -18,23 +18,67 @@ package top100;
 public class SearchinRotatedSortedArray_33 {
 
 	public static int search(int[] nums, int target) {
-		if (nums.length == 0) {
-			return -1;
-		}
 
-		return findMiddle(nums, 0, nums.length - 1, target);
+		return searchByLoop(nums, target);
+//		return searchByRecursive(nums, 0, nums.length - 1, target);
 	}
 
 	/**
 	 * 由于原数组是升序的 在旋转调整过后 2分后左右两边必然有一部分仍然是升序的
 	 * 判断target在左右哪一边后 重复该操作缩小2分范围
 	 * @param nums
+	 * @param target
+	 * @return
+	 */
+	private static int searchByLoop(int[] nums, int target) {
+		if (nums.length == 0) {
+			return -1;
+		}
+		int left = 0, right = nums.length - 1;
+		while (left <= right) {
+			int middleIndex = (left + ((right - left) >> 1));
+			if (nums[middleIndex] == target) {
+				return middleIndex;
+			}
+			if (nums[left] > nums[middleIndex]) {
+				// 右边有序
+				if (nums[middleIndex] < target && nums[right] >= target ) {
+					// target在右边
+					if (target == nums[right]) {
+						return right;
+					}
+					left = middleIndex + 1;
+				} else {
+					// target在左边
+					right = middleIndex - 1;
+				}
+			} else {
+				//左边有序
+				if (nums[middleIndex] > target && nums[left] <= target) {
+					// target在左边
+					if (target == nums[left]) {
+						return left;
+					}
+					right = middleIndex - 1;
+				} else {
+					// target在右边
+					left = middleIndex + 1;
+				}
+			}
+		}
+
+		return -1;
+	}
+	
+	/**
+	 *
+	 * @param nums
 	 * @param left
 	 * @param right
 	 * @param target
 	 * @return
 	 */
-	private static int findMiddle(int[] nums, int left, int right, int target) {
+	private static int searchByRecursive(int[] nums, int left, int right, int target) {
 		if (left >= right) {
 			return nums[left] == target ? left : -1;
 		}
@@ -53,19 +97,19 @@ public class SearchinRotatedSortedArray_33 {
 		if (nums[left] < temp) {
 			// target是否在左边
 			if (nums[left] < target && temp > target) {
-				return findMiddle(nums, left, middleIndex - 1, target);
+				return searchByRecursive(nums, left, middleIndex - 1, target);
 			}
-			return findMiddle(nums, middleIndex + 1, right, target);
+			return searchByRecursive(nums, middleIndex + 1, right, target);
 		} else {
 			if (temp < target && target < nums[right]) {
-				return findMiddle(nums, middleIndex + 1, right, target);
+				return searchByRecursive(nums, middleIndex + 1, right, target);
 			}
-			return findMiddle(nums, left, middleIndex - 1, target);
+			return searchByRecursive(nums, left, middleIndex - 1, target);
 		}
 	}
 
 	public static void main(String[] args) {
-		int[] nums = new int[] {1, 3};
-		System.out.println(search(nums, 0));
+		int[] nums = new int[] {1};
+		System.out.println(search(nums, 1));
 	}
 }
