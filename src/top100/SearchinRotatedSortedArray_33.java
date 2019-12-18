@@ -71,7 +71,7 @@ public class SearchinRotatedSortedArray_33 {
 	}
 	
 	/**
-	 *
+	 * 递归的方式
 	 * @param nums
 	 * @param left
 	 * @param right
@@ -108,8 +108,67 @@ public class SearchinRotatedSortedArray_33 {
 		}
 	}
 
+	//=====================上面两种[循环]和[递归]只是实现方式不一样,本质是一样的即找到有序的一部分然后判断target所在部分,从而缩小查找范围重复操作找到target
+	//=====================另一种思路,因为原数组有序,旋转调整后[最大值]与[最小值]相邻,且[最大值]左边部分有序,[最小值]右边部分有序,找到[最大值]与[最小值]交界的index后可定位target在哪边,直接2分查找即可
+
+	/**
+	 * 找到交叉点的方式
+	 * @param nums
+	 * @param target
+	 * @return
+	 */
+	private static int  searchByFindCrossIndex(int[] nums, int target) {
+		int crossIndex = findCrossIndex(nums);
+		int leftIndex, rightIndex;
+		if (target >= nums[0] && target <= nums[crossIndex]) {
+			leftIndex = 0;
+			rightIndex = crossIndex;
+		} else {
+			leftIndex = crossIndex + 1;
+			rightIndex = nums.length - 1;
+		}
+		return binarySearch(nums, leftIndex, rightIndex, target);
+	}
+
+	private static int binarySearch(int[] nums, int leftIndex, int rightIndex, int target) {
+		while (leftIndex <= rightIndex) {
+			int middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
+			if (nums[middleIndex] == target) {
+				return middleIndex;
+			} else if (nums[middleIndex] > target) {
+
+				rightIndex = middleIndex - 1;
+			} else {
+				leftIndex = middleIndex + 1;
+			}
+		}
+		return -1;
+	}
+
+	/**
+	 * 找到交叉点中 前面那个元素 [7,8,9,10,-1,0,1,2]===>10     [0,1,2,3]===>3
+	 * @param nums
+	 * @return
+	 */
+	private static int findCrossIndex(int[] nums) {
+		int leftIndex = 0, rightIndex = nums.length - 1;
+		int middleIndex;
+		while (leftIndex < rightIndex) {
+			middleIndex = leftIndex + ((rightIndex - leftIndex) >> 1);
+			if (nums[leftIndex] > nums[middleIndex]) {
+				rightIndex = middleIndex;
+			} else if (nums[leftIndex] == nums[middleIndex]) {
+				return leftIndex;
+			} else {
+				leftIndex = middleIndex;
+			}
+		}
+
+		return leftIndex;
+	}
 	public static void main(String[] args) {
-		int[] nums = new int[] {1};
-		System.out.println(search(nums, 1));
+		int[] nums = new int[] {7,8,9,-1,0,1,2};
+//		int[] nums = new int[] {6,7,8,9,10,11,12,-1,0,1,2};
+//		System.out.println(searchByFindCrossIndex(nums, 2));
 	}
 }
