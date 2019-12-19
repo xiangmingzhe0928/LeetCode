@@ -49,7 +49,7 @@ public class Work15 {
 	private static double sqrtNewTon(double n) {
 		// 初始猜想
 		double guess = n / 2.0;
-		while (Math.abs(guess - n / guess) > PRECISION) {
+		while (Math.abs(guess * guess - n) > PRECISION) {
 			guess = (guess + n / guess) / 2.0;
 		}
 		return guess;

@@ -169,6 +169,6 @@ public class SearchinRotatedSortedArray_33 {
 	public static void main(String[] args) {
 		int[] nums = new int[] {7,8,9,-1,0,1,2};
 //		int[] nums = new int[] {6,7,8,9,10,11,12,-1,0,1,2};
-//		System.out.println(searchByFindCrossIndex(nums, 2));
+		System.out.println(searchByFindCrossIndex(nums, 2));
 	}
 }
