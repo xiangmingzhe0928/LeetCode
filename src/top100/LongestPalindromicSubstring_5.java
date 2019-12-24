@@ -17,7 +17,7 @@ public class LongestPalindromicSubstring_5 {
 	 * abcba是回文字符串 那么从左右边界向中间同时移动后所有子字符串也是回文字符串(bcb也是回文字符串)
 	 * 因此这个是一个典型的DP问题
 	 * DP公式:
-	 *	若s(i)==s(j) 则只要s(i-1)==s(j-1)是回文字符串那么s(i,j)也是回文字符串。
+	 *	若s(i)==s(j) 则只要s(i+1)==s(j-1)是回文字符串那么s(i,j)也是回文字符串。
 	 *	DP解决此问题代码简单但是时间复杂度O(N^2)依然不低,并不是最优解
 	 * </pre>
 	 *
@@ -40,7 +40,7 @@ public class LongestPalindromicSubstring_5 {
 		int startIndex = 0;
 		int endIndex = 0;
 
-		// 由于需要S(i,j)的结果依赖S(i-1, j+1)的结果，左边界i需要从length-1递减，同理右边界需要从i递增
+		// 由于需要S(i,j)的结果依赖S(i+1, j-1)的结果，左边界i需要从length-1递减，同理右边界需要从i递增
 		for (int i = length-1; i >= 0; i--) {
 			for (int j = i; j < length; j++) {
 				tempI = s.charAt(i);
