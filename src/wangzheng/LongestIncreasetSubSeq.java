@@ -21,20 +21,19 @@ public class LongestIncreasetSubSeq {
 		for (int i = 1; i < nums.length; i++) {
 
 			// 下标为i的最大递增子序列为 nums(0...i-1)中小于nums[i]的最大子序列数+1
+			subLength[i] = 1;
 			for (int j = i-1; j >= 0; j--) {
-				if (nums[i] > nums[j]) {
-					subLength[i] = subLength[j] + 1;
-					break;
+				if (nums[i] >= nums[j]) {
+					subLength[i] = Math.max(subLength[i], subLength[j] + 1);
 				}
 			}
 			maxLength = Math.max(maxLength, subLength[i]);
-			subLength[i] = maxLength;
 		}
 
 		return maxLength;
 	}
 
 	public static void main(String[] args) {
-		System.out.println(longestIncreaseSeq(new int[]{10,22,9,33,21,50,41,60,80}));
+		System.out.println(longestIncreaseSeq(new int[]{1,3,6,6,9,4,10,5,7}));
 	}
 }
