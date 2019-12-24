@@ -72,7 +72,7 @@ public class CombinationSum_39 {
 			existsList.add(candidates[i]);
 			// 递归处理下一层情况  因为元素可以重复出现因此传递的fromIndex为i 而非i+1
 			backTrace(result, candidates, target - candidates[i], existsList, i);
-			// 剪枝
+			// 回溯
 			existsList.remove(existsList.size() - 1);
 		}
 
