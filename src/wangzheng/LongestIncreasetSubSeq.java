@@ -23,7 +23,7 @@ public class LongestIncreasetSubSeq {
 			// 下标为i的最大递增子序列为 nums(0...i-1)中小于nums[i]的最大子序列数+1
 			subLength[i] = 1;
 			for (int j = i-1; j >= 0; j--) {
-				if (nums[i] >= nums[j]) {
+				if (nums[i] > nums[j]) { // 若支持重复元素的序列 >=即可
 					subLength[i] = Math.max(subLength[i], subLength[j] + 1);
 				}
 			}
