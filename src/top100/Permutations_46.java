@@ -33,7 +33,9 @@ public class Permutations_46 {
 		}
 		List<List<Integer>> res = new ArrayList<>();
 		List<Integer> preList = new LinkedList<>();
-		collection(res, nums, preList);
+		boolean[] solider = new boolean[nums.length];
+//		collection(res, nums, preList);
+		collectionWithSolider(res, nums, preList, solider);
 		return res;
 	}
 
@@ -59,7 +61,33 @@ public class Permutations_46 {
 		}
 	}
 
+	/**
+	 * Discuss里 别人比较好的方式 使用哨兵占位标记该元素是否被记录过
+	 * 为避免使用 {@code List.contains()} O(N)的复杂度
+	 * @param res
+	 * @param nums
+	 * @param preList
+	 * @param solider
+	 */
+	private static void collectionWithSolider(List<List<Integer>> res, int[] nums, List<Integer> preList, boolean[] solider) {
+		if (preList.size() == nums.length) {
+			res.add(new ArrayList<>(preList));
+			return;
+		}
+
+		for (int i = 0; i < nums.length; i++) {
+			if (solider[i]) {
+				continue;
+			}
+			solider[i] = true;
+			preList.add(nums[i]);
+			collectionWithSolider(res, nums, preList, solider);
+			preList.remove(preList.size() - 1);
+			solider[i] = false;
+		}
+	}
+
 	public static void main(String[] args) {
-		System.out.println(permute(new int[]{1,2,3,4}));
+		System.out.println(permute(new int[]{1,2,3}));
 	}
 }
