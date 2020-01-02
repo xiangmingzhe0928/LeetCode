@@ -21,8 +21,6 @@ import java.util.Arrays;
 public class SortColors_75 {
 
 	/**
-	 * 本质就是排序
-	 * 可借助快排思想 双指针左右逼近 中间数取1即可
 	 * @param nums
 	 */
 	public static void sortColors(int[] nums) {
