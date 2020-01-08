@@ -1,7 +1,5 @@
 package Array;
 
-import java.util.Arrays;
-
 /**
  * Array
  * description:就是一个含有0,1,2重复元素的排序问题
@@ -73,9 +71,11 @@ public class SortColors_75 {
 	}
 
 	public static void main(String[] args) {
-		int[] nums = new int[] {0, 0, 1, 2, 1, 2, 1, 1, 0, 1, 0, 0, 1, 2, 1, 2, 1};
-		long begin = System.currentTimeMillis();
-		sortColors(nums);
-		System.out.println(Arrays.toString(nums));
+//		int[] nums = new int[] {0, 0, 1, 2, 1, 2, 1, 1, 0, 1, 0, 0, 1, 2, 1, 2, 1};
+//		long begin = System.currentTimeMillis();
+//		sortColors(nums);
+//		System.out.println(Arrays.toString(nums));
+
+		System.out.println("abcd".substring(1,4));
 	}
 }
