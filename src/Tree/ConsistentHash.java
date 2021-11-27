@@ -67,12 +67,20 @@ public class ConsistentHash {
 
     private static String getNodeIp(String clientIp) {
         // tailMap() 返回treeMap中大于等于fromKey的数据
-        SortedMap<Long, String> nodeTailMap = hashNodeMap.tailMap(hash(clientIp));
-        if (nodeTailMap.isEmpty()) {
-            //nodeTailMap为空表明目标key超过最大key 由于一致性hash为环形hash 此时目标key就应变为头key
+        //        SortedMap<Long, String> nodeTailMap = hashNodeMap.tailMap(hash(clientIp));
+        //        if (nodeTailMap.isEmpty()) {
+        //            //nodeTailMap为空表明目标key超过最大key 由于一致性hash为环形hash 此时目标key就应变为头key
+        //            return hashNodeMap.firstEntry().getValue();
+        //        }
+        //        return hashNodeMap.get(nodeTailMap.firstKey());
+
+
+        Map.Entry<Long, String> higherEntry = hashNodeMap.higherEntry(hash(clientIp));
+        if (null == higherEntry) {
             return hashNodeMap.firstEntry().getValue();
         }
-        return hashNodeMap.get(nodeTailMap.firstKey());
+
+        return higherEntry.getValue();
     }
 
     public static void main(String[] args) {
